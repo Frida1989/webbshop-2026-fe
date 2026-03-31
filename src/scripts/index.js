@@ -1,20 +1,20 @@
 import { getProducts } from "../utils/productsApi.js";
 
 // TEMP: Default products for rendering when backend is unavailable
-const TEMP_PRODUCTS = [
-  { name: "Organic Tomatoes", price: 4.99, image: null },
-  { name: "Fresh Milk", price: 2.49, image: null },
-  { name: "Whole Grain Bread", price: 3.99, image: null },
-  { name: "Free Range Eggs", price: 5.49, image: null },
-  { name: "Bananas", price: 1.29, image: null },
-  { name: "Greek Yogurt", price: 3.79, image: null },
-];
+// const TEMP_PRODUCTS = [
+// { name: "Organic Tomatoes", price: 4.99, image: null },
+// { name: "Fresh Milk", price: 2.49, image: null },
+// { name: "Whole Grain Bread", price: 3.99, image: null },
+// { name: "Free Range Eggs", price: 5.49, image: null },
+// { name: "Bananas", price: 1.29, image: null },
+// { name: "Greek Yogurt", price: 3.79, image: null },
+// ];
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
 async function loadProducts() {
   const productsContainer = document.getElementById("products");
-  productsContainer.innerHTML = "<p>Loading products...</p>";
+  productsContainer.innerHTML = "<p>Loading events...</p>";
 
   try {
     const products = await getProducts();
@@ -54,7 +54,7 @@ function createProductCard(product) {
 
   const imageSection = product.image
     ? `<img class="product-card__image" src="${product.image}" alt="${product.name}" loading="lazy" />`
-    : `<div class="product-card__image-placeholder">🥬</div>`;
+    : `<div class="product-card__image-placeholder">🎈</div>`;
 
   element.innerHTML = `
     ${imageSection}
