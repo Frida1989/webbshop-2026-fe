@@ -13,8 +13,10 @@
       <nav>
         <a href="index.html" class="logo">Eventera</a>
         <ul class="nav-links">
-          <li><a href="products.html">Events</a></li>
+          <!-- <li><a href="products.html">Events</a></li> -->
+          <li><a href="about.html">About us</a></li>
           <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Log In</a></li>
         <!-- <li><a href="admin.html">Admin</a></li>  SYNLIGT ENDAST NÄR INLOGGAD SOM ADMIN -->
         </ul>
       </nav>
@@ -23,10 +25,34 @@
     <!-- HERO (full width) -->
     <section class="hero">
       <h1>Find your vibe</h1>
-      <input type="text" placeholder="location">
-      <label for="datepicker"></label>
-      <input type="date" id="datepicker" name="datepicker">
-      <button id="searchBtn">Search</button>
+      <label>Location:</label>
+        <select id="location">
+          <option value="" disabled selected>--location--</option>
+          <option value="Stockholm">Stockholm</option>
+          <option value="Malmö">Malmö</option>
+          <option value="Göteborg">Göteborg</option>
+          <option value="Uppsala">Uppsala</option>
+        </select>
+        <label for="datepicker">Select Date</label>
+        <input type="date" id="datepicker" name="datepicker" placeholder="date">
+        <label>Category:</label>
+        <select id="category">
+          <option value="" disabled selected>--Category--</option>
+          <option value="music">Music</option>
+          <option value="art">Art and culture</option>
+          <option value="health">Health and Welbeing</option>
+          <option value="sport">Sport and Coaching</option>
+          <option value="dance">Dancing</option>
+          <option value="travel">Travel and outdoors</option>
+          <option value="social">Social activitis</option>
+        </select>
+        <label>Type:</label>
+        <select id="category">
+          <option value="" disabled selected>--Type--</option>
+          <option value="online">Online</option>
+          <option value="person">in person</option>
+        </select>
+      <button id="searchBtn" class="btn-secondary">Search Events</button>
     </section>
 
     <!-- MAIN CONTENT -->
