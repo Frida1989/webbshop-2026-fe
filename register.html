@@ -5,57 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - Eventera</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.8.4/dist/axios.min.js"></script>
+    <script type="module" src="./src/scripts/register.js" defer></script>
+    <script type="module" src="./src/scripts/index.js" defer></script>
+    <script src="./src/scripts/header.js" defer></script>
   </head>
   <body>
 
-    <!-- HEADER -->
     <header class="site-header">
-      <nav>
+      <nav class="nav">
         <a href="index.html" class="logo">Eventera</a>
+        
         <ul class="nav-links">
-          <!-- <li><a href="products.html">Events</a></li> -->
           <li><a href="about.html">About us</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="login.html">Log In</a></li>
-          <!-- <li><a href="admin.html">Admin</a></li>  SYNLIGT ENDAST NÄR INLOGGAD SOM ADMIN -->
         </ul>
+
+        <div class="user-area" id="userArea" style="display: none;">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      <h1>Register</h1>
-      <div id="register-container" class="register-wrapper">
+    <section class="register-hero">
+      <div class="register-card">
+        <h1>Find your vibe.</h1>
+        <p>Join Eventera and discover unforgettable experiences</p>
+
         <form id="registerForm" class="register-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" required />
+          <div>
+            <span class="form-label">Full Name</span>
+            <input type="text" id="name" placeholder="Enter your name" required />
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required />
+          
+          <div>
+            <span class="form-label">Email Address</span>
+            <input type="email" id="email" placeholder="you@example.com" required />
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" required />
+          
+          <div>
+            <span class="form-label">Password</span>
+            <input type="password" id="password" placeholder="Create a password" minlength="6" required />
           </div>
-          <button type="submit">Register</button>
+
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            Create Account
+          </button>
         </form>
+
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem;">
+          Already have an account? 
+          <a href="login.html" style="color: white; text-decoration: underline;">Log in</a>
+        </p>
       </div>
-    </main>
+    </section>
 
     <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-content">
-        <p>&copy; 2026 Eventera. All rights reserved.</p>
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Eventera</a>
+          <p class="footer-text">
+            Discover curated experiences, book unforgettable moments, and find the events that match your vibe.
+          </p>
+        </div>
+        
         <div class="footer-links">
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/terms">Terms</a>
+          <a href="about.html">About</a>
+          <a href="#">Events</a>
+          <a href="#">Contact</a>
+          <a href="#">Terms</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Eventera. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
-    <script type="module" src="./src/scripts/register.js"></script>
+
   </body>
 </html>

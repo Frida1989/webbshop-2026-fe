@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": "a660",
+      "name": "Marek Jankowicz",
+      "email": "marek.jankowicz@gmail.com",
+      "password": "secret123"
+    }
+  ]
+}
