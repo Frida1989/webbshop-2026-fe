@@ -71,3 +71,36 @@ function createProductCard(product) {
 
   return element;
 }
+
+const form = document.getElementById('loginForm');
+
+if (form) {
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    try {
+      const response = await axios.get("http://localhost:3000/users");
+
+      const user = response.data.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+        window.location.assign("index.html");
+      } else {
+        alert("Invalid email or password.");
+      }
+
+    } catch (error) {
+      console.error(error);
+      alert("Login failed.");
+    }
+  });
+}

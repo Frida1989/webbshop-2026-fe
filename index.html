@@ -5,22 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eventera</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.8.4/dist/axios.min.js"></script>
+    <script type="module" src="./src/scripts/index.js" defer></script>
+    <script src="./src/scripts/header.js" defer></script>
 
     <!-- <script type="module" src="./src/scripts/index.js"></script> -->
   </head>
   <body>
     <!-- HEADER -->
     <header class="site-header">
-      <!-- lagt till .container och .nav klass -->
       <nav class="container nav">
         <a href="index.html" class="logo">Eventera</a>
         <ul class="nav-links">
-          <!-- <li><a href="products.html">Events</a></li> -->
           <li><a href="about.html">About us</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="login.html" class="nav-login">Log In</a></li>
-          <!-- <li><a href="admin.html">Admin</a></li>  SYNLIGT ENDAST NÄR INLOGGAD SOM ADMIN -->
         </ul>
+
+        <!-- User Area -->
+        <div class="user-area" id="userArea" style="display: none;">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
       </nav>
     </header>
 
@@ -113,7 +123,6 @@
     <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container footer-content">
-        <!-- Brand / message -->
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">Eventera</a>
           <p class="footer-text">
@@ -122,7 +131,6 @@
           </p>
         </div>
 
-        <!-- Footer navigation -->
         <div class="footer-links">
           <a href="about.html">About</a>
           <a href="events.html">Events</a>
@@ -130,7 +138,6 @@
           <a href="terms.html">Terms</a>
         </div>
 
-        <!-- Bottom line -->
         <div class="footer-bottom">
           <p>&copy; 2026 Eventera. All rights reserved.</p>
         </div>
