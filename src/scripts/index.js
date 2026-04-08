@@ -85,19 +85,27 @@ if (form) {
     const password = passwordInput.value.trim();
 
     try {
-      const response = await axios.get("http://localhost:3000/users");
-
-      const user = response.data.find(
-        (u) => u.email === email && u.password === password
+      const response = await axios.post(
+        "https://webbshop-2026-be-one.vercel.app/auth/login",
+        {
+          email,
+          password,
+        }
       );
 
-      if (user) {
+      if (response.status === 200) {
+        const token = response.data.token;
+        const user = response.data.user;
+
+        localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
+
+        console.log("Logged in:", user);
+
         window.location.assign("index.html");
       } else {
         alert("Invalid email or password.");
       }
-
     } catch (error) {
       console.error(error);
       alert("Login failed.");
