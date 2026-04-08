@@ -28,7 +28,6 @@ if (form) {
         password
       });
 
-      // SAVE USER (AUTO LOGIN)
       localStorage.setItem("user", JSON.stringify(response.data));
 
       console.log("Registered & logged in:", response.data);
