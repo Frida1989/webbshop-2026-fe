@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span>🎟 ${event.price} kr</span>
           </div>
 
-          <a href="#" class="event-button">View Details</a>
+          <a href="event-details.html?id=${event._id}" class="event-button">Book now</a>
         </div>
       `;
 
