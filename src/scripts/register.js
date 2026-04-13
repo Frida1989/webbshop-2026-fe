@@ -5,7 +5,7 @@ if (form) {
   const emailInput = document.querySelector("#email");
   const passwordInput = document.querySelector("#password");
 
-  if (localStorage.getItem("user")) {
+  if (localStorage.getItem("token")) {
     window.location.assign("index.html");
   }
 
@@ -22,21 +22,46 @@ if (form) {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/users", {
-        name,
-        email,
-        password
-      });
+      const registerResponse = await axios.post(
+        "https://webbshop-2026-be-one.vercel.app/auth/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
-      localStorage.setItem("user", JSON.stringify(response.data));
+      console.log({ name, email, password });
 
-      console.log("Registered & logged in:", response.data);
+      if (registerResponse.status === 201) {
+        console.log("Registration successful");
 
-      window.location.assign("index.html");
+        const loginResponse = await axios.post(
+          "https://webbshop-2026-be-one.vercel.app/auth/login",
+          {
+            email: email,
+            password,
+          }
+        );
+
+        if (loginResponse.status === 200) {
+          const token = loginResponse.data.token;
+
+          localStorage.setItem("token", token);
+
+          console.log("Logged in with token:", token);
+
+          window.location.assign("index.html");
+        } else {
+          throw new Error("Login failed after registration");
+        }
+      } else {
+        throw new Error("Registration failed");
+      }
 
     } catch (error) {
       console.error("Error:", error);
-      alert("Registration failed.");
+      alert("Registration or login failed.");
     }
   });
 }
