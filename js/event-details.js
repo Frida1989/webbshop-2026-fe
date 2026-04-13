@@ -5,6 +5,8 @@ const bookingMessage = document.getElementById("bookingMessage");
 const params = new URLSearchParams(window.location.search);
 const eventId = params.get("id");
 
+let currentEvent = null;
+
 function formatDate(dateString) {
   const date = new Date(dateString);
 
@@ -16,7 +18,26 @@ function formatDate(dateString) {
 }
 
 function getSpotsLeft(event) {
-  return event.maxCapacity - (event.currentBookings || 0);
+  return event.spotsLeft - (event.currentBookings || 0);
+}
+
+function updateBookingButtonState(event) {
+  const submitButton = document.querySelector(".booking-submit-btn");
+  if (!submitButton) return;
+
+  const spotsLeft = getSpotsLeft(event);
+
+  if (spotsLeft <= 0) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Event is fully booked";
+    bookingMessage.textContent =
+      "This event is fully booked. Please choose another event.";
+    bookingMessage.style.color = "red";
+  } else {
+    submitButton.disabled = false;
+    submitButton.textContent = "Reserve your spot";
+    bookingMessage.textContent = "";
+  }
 }
 
 function renderEventDetails(event) {
@@ -40,6 +61,26 @@ function renderEventDetails(event) {
       </div>
     </div>
   `;
+
+  updateBookingButtonState(event);
+}
+
+function autofillBookingForm() {
+  const storedUser = localStorage.getItem("user");
+  if (!storedUser) return;
+
+  const user = JSON.parse(storedUser);
+
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+
+  if (user.name && nameInput) {
+    nameInput.value = user.name;
+  }
+
+  if (user.email && emailInput) {
+    emailInput.value = user.email;
+  }
 }
 
 async function loadEventDetails() {
@@ -58,6 +99,8 @@ async function loadEventDetails() {
     }
 
     const event = await response.json();
+    currentEvent = event;
+
     console.log("Event details:", event);
 
     renderEventDetails(event);
@@ -70,9 +113,36 @@ async function loadEventDetails() {
 bookingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  if (!currentEvent) {
+    bookingMessage.textContent = "Could not load event information.";
+    bookingMessage.style.color = "red";
+    return;
+  }
+
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const quantity = Number(document.getElementById("quantity").value);
+
+  if (!name || !email || !quantity || quantity < 1) {
+    bookingMessage.textContent = "Please fill in all fields correctly.";
+    bookingMessage.style.color = "red";
+    return;
+  }
+
+  const spotsLeft = getSpotsLeft(currentEvent);
+
+  if (spotsLeft <= 0) {
+    bookingMessage.textContent = "Sorry, this event is fully booked.";
+    bookingMessage.style.color = "red";
+    updateBookingButtonState(currentEvent);
+    return;
+  }
+
+  if (quantity > spotsLeft) {
+    bookingMessage.textContent = `Only ${spotsLeft} spot(s) left for this event.`;
+    bookingMessage.style.color = "red";
+    return;
+  }
 
   const bookingData = {
     eventId,
@@ -80,6 +150,12 @@ bookingForm.addEventListener("submit", async (e) => {
     name,
     email,
   };
+
+  const submitButton = document.querySelector(".booking-submit-btn");
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Processing...";
+  }
 
   try {
     const response = await fetch(
@@ -97,17 +173,30 @@ bookingForm.addEventListener("submit", async (e) => {
       throw new Error("Booking failed");
     }
 
-    bookingMessage.textContent = "Your booking was successful!";
-    bookingMessage.style.color = "green";
+    const confirmationData = {
+      eventTitle: currentEvent.title,
+      eventDate: currentEvent.date,
+      eventLocation: currentEvent.location,
+      quantity,
+      name,
+      email,
+    };
 
-    bookingForm.reset();
-    loadEventDetails();
+    localStorage.setItem("latestBooking", JSON.stringify(confirmationData));
+
+    window.location.href = "booking-confirmation.html";
   } catch (error) {
     console.error("Booking error:", error);
     bookingMessage.textContent =
       "Could not complete booking. Please try again.";
     bookingMessage.style.color = "red";
+
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Reserve your spot";
+    }
   }
 });
 
 loadEventDetails();
+autofillBookingForm();
