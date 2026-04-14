@@ -12,17 +12,20 @@
 <body>
 
     <header class="site-header">
-      <nav class="nav">
+      <nav class="container nav">
         <a href="index.html" class="logo">Eventera</a>
         <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
           <li><a href="register.html">Register</a></li>
-          <li><a href="login.html">Log In</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li>
         </ul>
 
-        <div class="user-area" id="userArea" style="display: none;">
-          <div class="user-profile">
-            <div class="user-avatar" id="userInitial"></div>
+        <!-- User Area -->
+        <div class="user-area" id="userArea" style="display: none">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
             <span id="userName">User</span>
           </div>
           <button class="logout-btn" id="logoutBtn">Logout</button>
