@@ -31,15 +31,13 @@ if (form) {
         }
       );
 
-      console.log({ name, email, password });
-
       if (registerResponse.status === 201) {
         console.log("Registration successful");
 
         const loginResponse = await axios.post(
           "https://webbshop-2026-be-one.vercel.app/auth/login",
           {
-            email: email,
+            email,
             password,
           }
         );
@@ -49,18 +47,16 @@ if (form) {
 
           localStorage.setItem("token", token);
 
-          console.log("Logged in with token:", token);
+          localStorage.setItem("user", JSON.stringify({ name, email }));
+
+          console.log("Registered & logged in:", { name, email });
 
           window.location.assign("index.html");
-        } else {
-          throw new Error("Login failed after registration");
         }
-      } else {
-        throw new Error("Registration failed");
       }
 
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error:", error.response?.data || error);
       alert("Registration or login failed.");
     }
   });

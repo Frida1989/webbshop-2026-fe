@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booking Confirmation | Eventera</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="./src/scripts/header.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -17,6 +18,14 @@
           <li><a href="register.html">Register</a></li>
           <li><a href="login.html" class="nav-login">Log In</a></li>
         </ul>
+
+        <div class="user-area" id="userArea" style="display: none;">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
       </nav>
     </header>
 
