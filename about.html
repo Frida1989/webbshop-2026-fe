@@ -1,33 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventera</title>
+    <title>About Us | Eventera</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="./src/scripts/header.js" defer></script>
-</head>
-<body>
-    <header class="site-header">
-      <nav>
-        <a href="index.html" class="logo">Eventera</a>
-        <ul class="nav-links">
-          <!-- <li><a href="products.html">Events</a></li> -->
-          <li><a href="about.html">About us</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="login.html">Log In</a></li>
-        <!-- <li><a href="admin.html">Admin</a></li>  SYNLIGT ENDAST NÄR INLOGGAD SOM ADMIN -->
-        </ul>
+    <link rel="stylesheet" href="aboutUs.css" />
+  </head>
+  <body>
+   <header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">Eventera</a>
 
-        <div class="user-area" id="userArea" style="display: none;">
-          <div class="user-profile">
-            <div class="user-avatar" id="userInitial"></div>
-            <span id="userName">User</span>
-          </div>
-          <button class="logout-btn" >Logout</button>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active" aria-current="page">About us</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="login.html">Log In</a></li>
+    </ul>
+
+    <div class="user-area" id="userArea" style="display: none">
+      <div class="user-profile">
+        <div class="user-avatar" id="userInitial"></div>
+        <span id="userName">User</span>
+      </div>
+      <button class="logout-btn" type="button">Logout</button>
+    </div>
+  </nav>
+</header>
+
+    <main class="about-page">
+    <section class="about-hero">
+  <div class="container about-hero-inner">
+    <div class="about-hero-text">
+      <p class="section-label">ABOUT EVENTERA</p>
+      <h1>We make it easier to discover and book unforgettable events.</h1>
+      <p class="about-intro">
+        Eventera is built for people who want memorable experiences without the
+        stress. From concerts and workshops to community gatherings and special
+        moments, we help users find events that match their vibe.
+      </p>
+
+      <div class="about-hero-buttons">
+        <a href="index.html" class="primary-btn">Explore Events</a>
+        <a href="#our-story" class="secondary-btn">Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- STORY -->
+      <section class="about-section story-section" id="our-story">
+        <div class="section-heading">
+          <p class="section-label">OUR STORY</p>
+          <h2>Created to connect people with experiences worth remembering.</h2>
         </div>
-      </nav>
-    </header>
+
+        <div class="story-grid">
+          <div class="story-text">
+            <p>
+              Eventera was created from a simple idea: finding and booking
+              events should feel inspiring, easy, and trustworthy. Too often,
+              event platforms feel cluttered, confusing, or outdated.
+            </p>
+            <p>
+              We wanted to create a space where users can quickly understand
+              what an event is, when it happens, how much it costs, and whether
+              it's the right fit for them.
+            </p>
+            <p>
+              Our goal is to combine smart structure with a modern visual
+              experience, so every visitor feels confident exploring what's
+              next.
+            </p>
+          </div>
+<div class="story-highlight">
+  <div class="quote-box">
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        “Finally a platform where event details actually make sense. I
+        booked in less than 2 minutes.”
+      </p>
+      <div class="testimonial-user">
+        <span class="user-name">Johan Eriksson</span>
+        <span class="user-role">User</span>
+      </div>
+    </div>
+  </div>
+</div>
+      </section>
+
+      <!-- VALUES -->
+      <section class="about-section values-section">
+        <div class="section-heading center">
+          <p class="section-label">OUR VALUES</p>
+          <h2>What guides the way we build.</h2>
+        </div>
+
+        <div class="values-grid">
+          <article class="value-card">
+            <div class="value-number">01</div>
+            <h3>Simplicity</h3>
+            <p>
+              We believe booking an event should be clear, smooth, and
+              frustration-free.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-number">02</div>
+            <h3>Trust</h3>
+            <p>
+              Accurate event details, clear pricing, and transparent information
+              always come first.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-number">03</div>
+            <h3>Experience</h3>
+            <p>
+              We care about how users feel while browsing, choosing, and
+              booking.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-number">04</div>
+            <h3>Connection</h3>
+            <p>
+              Events bring people together, and our platform is designed to
+              support that.
+            </p>
+          </article>
+        </div>
+      </section>
+
+<!-- WHY US -->
+<section class="why-us-section">
+  <div class="why-us-container">
     
-</body>
+    <p class="section-label">WHY EVENTERA</p>
+
+    <h2>Designed with both users and organizers in mind.</h2>
+<p class="why-us-intro">
+      Our platform is not only about helping visitors discover events — it's
+      also about giving organizers a better way to present them. We want every
+      event to feel appealing, informative, and easy to manage.
+    </p>
+
+    <ul class="why-us-list">
+      <li>Clear event cards with useful details</li>
+      <li>Simple navigation and booking flow</li>
+      <li>A visual style that feels modern and inviting</li>
+      <li>A platform that can grow with more events and users</li>
+    </ul>
+  </div>
+</section>
+
+      
+      <!-- CTA -->
+      <section class="about-cta">
+        <div class="cta-content">
+          <p class="section-label">READY TO EXPLORE?</p>
+          <h2>Find your next event with Eventera.</h2>
+          <p>
+            Browse curated experiences, discover new moments, and book with
+            confidence.
+          </p>
+          <a href="index.html" class="primary-btn">Go to Events</a>
+        </div>
+      </section>
+
+      <!-- OUR CLIENTS -->
+      <section class="about-section clients-section">
+        <div class="section-heading center">
+          <p class="section-label">OUR CLIENTS</p>
+          <h2>Trusted by event creators and communities</h2>
+        </div>
+
+        <div class="clients-logos">
+          <div class="client-logo">EVENT CO</div>
+          <div class="client-logo">STOCKHOLM LIVE</div>
+          <div class="client-logo">CREATIVE HUB</div>
+          <div class="client-logo">URBAN EVENTS</div>
+          <div class="client-logo">NORDIC FEST</div>
+        </div>
+      </section>
+      </main>
+          <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Eventera</a>
+          <p class="footer-text">
+            Discover curated experiences, book unforgettable moments, and find
+            the events that match your vibe.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Eventera. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  
+  </body>
 </html>
