@@ -5,73 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | Eventera</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="aboutUs.css" />
-  </head>
-  <body>
-   <header class="site-header">
-  <nav class="nav container">
-    <a href="index.html" class="logo">Eventera</a>
+    <script src="./src/scripts/header.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+      <nav>
+        <a href="index.html" class="logo">Eventera</a>
+        <ul class="nav-links">
+          <!-- <li><a href="products.html">Events</a></li> -->
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li>
+        <!-- <li><a href="admin.html">Admin</a></li>  SYNLIGT ENDAST NÄR INLOGGAD SOM ADMIN -->
+        </ul>
 
-    <ul class="nav-links">
-      <li><a href="about.html" class="active" aria-current="page">About us</a></li>
-      <li><a href="register.html">Register</a></li>
-      <li><a href="login.html">Log In</a></li>
-    </ul>
-
-    <div class="user-area" id="userArea" style="display: none">
-      <div class="user-profile">
-        <div class="user-avatar" id="userInitial"></div>
-        <span id="userName">User</span>
-      </div>
-      <button class="logout-btn" type="button">Logout</button>
-    </div>
-  </nav>
-</header>
-
-    <main class="about-page">
-    <section class="about-hero">
-  <div class="container about-hero-inner">
-    <div class="about-hero-text">
-      <p class="section-label">ABOUT EVENTERA</p>
-      <h1>We make it easier to discover and book unforgettable events.</h1>
-      <p class="about-intro">
-        Eventera is built for people who want memorable experiences without the
-        stress. From concerts and workshops to community gatherings and special
-        moments, we help users find events that match their vibe.
-      </p>
-
-      <div class="about-hero-buttons">
-        <a href="index.html" class="primary-btn">Explore Events</a>
-        <a href="#our-story" class="secondary-btn">Our Story</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-      <!-- STORY -->
-      <section class="about-section story-section" id="our-story">
-        <div class="section-heading">
-          <p class="section-label">OUR STORY</p>
-          <h2>Created to connect people with experiences worth remembering.</h2>
-        </div>
-
-        <div class="story-grid">
-          <div class="story-text">
-            <p>
-              Eventera was created from a simple idea: finding and booking
-              events should feel inspiring, easy, and trustworthy. Too often,
-              event platforms feel cluttered, confusing, or outdated.
-            </p>
-            <p>
-              We wanted to create a space where users can quickly understand
-              what an event is, when it happens, how much it costs, and whether
-              it's the right fit for them.
-            </p>
-            <p>
-              Our goal is to combine smart structure with a modern visual
-              experience, so every visitor feels confident exploring what's
-              next.
-            </p>
+        <div class="user-area" id="userArea" style="display: none;">
+          <div class="user-profile">
+            <div class="user-avatar" id="userInitial"></div>
+            <span id="userName">User</span>
           </div>
 <div class="story-highlight">
   <div class="quote-box">
