@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const eventsGrid = document.getElementById("eventsGrid");
+  const searchForm = document.querySelector(".hero-search-card");
+  const locationSelect = document.getElementById("location");
+  const dateInput = document.getElementById("datepicker");
+  const categorySelect = document.getElementById("category");
+
+  let allEvents = [];
 
   function formatDate(dateString) {
     const date = new Date(dateString);
@@ -12,7 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getSpotsLeft(event) {
-    return event.maxCapacity - (event.currentBookings || 0);
+    if (event.spotsLeft !== undefined && event.spotsLeft !== null) {
+      return Number(event.spotsLeft);
+    }
+
+    const maxCapacity = Number(event.maxCapacity) || 0;
+    const currentBookings = Number(event.currentBookings) || 0;
+
+    return Math.max(0, maxCapacity - currentBookings);
   }
 
   function getUpcomingEvents(eventsList) {
@@ -24,8 +37,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return [...eventsList].sort((a, b) => new Date(a.date) - new Date(b.date));
   }
 
+  function filterEvents(eventsList, filters) {
+    return eventsList.filter((event) => {
+      const matchesLocation =
+        !filters.location || event.location === filters.location;
+
+      const matchesCategory =
+        !filters.category ||
+        event.category?.toLowerCase() === filters.category.toLowerCase();
+
+      const matchesDate =
+        !filters.date ||
+        new Date(event.date).toISOString().split("T")[0] === filters.date;
+
+      return matchesLocation && matchesCategory && matchesDate;
+    });
+  }
+
   function renderEvents(eventsList) {
     eventsGrid.innerHTML = "";
+
+    if (eventsList.length === 0) {
+      eventsGrid.innerHTML = "<p>No events match your search.</p>";
+      return;
+    }
 
     eventsList.forEach((event) => {
       const spotsLeft = getSpotsLeft(event);
@@ -37,7 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="event-image">
           <img src="${event.imageUrl}" alt="${event.title}">
           <span class="event-category">${event.category}</span>
-          <span class="event-spots">${spotsLeft} spots left</span>
+          <span class="event-spots">
+            ${spotsLeft === 0 ? "Sold out" : `${spotsLeft} spots left`}
+          </span>
         </div>
 
         <div class="event-content">
@@ -58,6 +95,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const filters = {
+      location: locationSelect.value,
+      date: dateInput.value,
+      category: categorySelect.value,
+    };
+
+    const upcomingEvents = getUpcomingEvents(allEvents);
+    const filteredEvents = filterEvents(upcomingEvents, filters);
+    const sortedEvents = sortEventsByDate(filteredEvents);
+
+    renderEvents(sortedEvents);
+  });
+
   async function loadEvents() {
     try {
       eventsGrid.innerHTML = "<p>Loading events...</p>";
@@ -71,10 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const events = await response.json();
+      allEvents = events;
 
-      console.log("API data:", events); // 🔥 viktigt för debug
+      console.log("API data:", events);
 
-      const upcomingEvents = getUpcomingEvents(events);
+      const upcomingEvents = getUpcomingEvents(allEvents);
       const sortedEvents = sortEventsByDate(upcomingEvents);
 
       renderEvents(sortedEvents);
