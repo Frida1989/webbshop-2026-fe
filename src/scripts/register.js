@@ -6,7 +6,7 @@ if (form) {
   const passwordInput = document.querySelector("#password");
 
   if (localStorage.getItem("token")) {
-    window.location.assign("index.html");
+    window.location.assign("admin.html");
   }
 
   form.addEventListener("submit", async (e) => {
@@ -51,7 +51,7 @@ if (form) {
 
           console.log("Registered & logged in:", { name, email });
 
-          window.location.assign("index.html");
+          window.location.assign("admin.html");
         }
       }
 

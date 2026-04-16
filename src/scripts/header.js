@@ -58,7 +58,7 @@ function protectAuthPages() {
   const path = window.location.pathname;
 
   if (isLoggedIn() && (path.includes("login.html") || path.includes("register.html"))) {
-    window.location.assign("index.html");
+    window.location.assign("admin.html");
   }
 }
 
