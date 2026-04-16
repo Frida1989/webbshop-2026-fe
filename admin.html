@@ -3,25 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin - Hakim Livs</title>
+    <title>Admin Dashboard | Eventera</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="admin.css" />
+    <script src="./src/scripts/header.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <nav>
-        <a href="index.html" class="logo">Hakim Livs</a>
+      <nav class="container nav">
+        <a href="index.html" class="logo">Eventera</a>
         <ul class="nav-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="cart.html">Cart (0)</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="admin.html">Admin</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <!-- <li><a href="register.html">Register</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li> -->
         </ul>
+
+        <div class="user-area" id="userArea" style="display: none">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
       </nav>
     </header>
 
     <main class="admin-main">
-      <h1>Admin – Create Product</h1>
+      <h1>Admin – Manage Products</h1>
 
       <form id="createProductForm" class="admin-form">
         <div class="admin-form-row">
@@ -33,8 +43,8 @@
           <input type="number" id="price" step="0.01" min="0" required />
         </div>
         <div class="admin-form-row">
-          <label for="stock">Stock</label>
-          <input type="number" id="stock" min="0" required />
+          <label for="spots">Spots</label>
+          <input type="number" id="spots" min="0" required />
         </div>
         <div class="admin-form-row">
           <label for="image">Image URL</label>
@@ -49,17 +59,28 @@
 
       <h2>Products</h2>
       <div class="admin-table-wrap">
+        <div class="admin-filters">
+          <button id="filterAll" class="active">All</button>
+          <button id="filterUpcoming">Upcoming</button>
+          <button id="filterSoldOut">Sold Out</button>
+        </div>
+        <button onclick="window.print()" class="print-btn">Print</button>
         <table class="admin-table">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Location</th>
               <th>Price</th>
-              <th>Stock</th>
-              <th>Slug</th>
+              <th>Bookings</th>
+              <th>Spots Left</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="productsTableBody">
-            <tr><td colspan="4">Loading...</td></tr>
+            <tr id="loadingRow">
+              <td colspan="7" class="loading-cell">Loading products...</td>
+            </tr>
           </tbody>
         </table>
       </div>

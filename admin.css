@@ -1,76 +1,141 @@
-/* Admin – simple white, tables, forms */
-.admin-main {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: #fff;
-}
-
-.admin-main h1 {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.5rem;
-}
-
-.admin-main h2 {
-  margin: 2rem 0 1rem 0;
-  font-size: 1.25rem;
-}
-
-.admin-form {
-  padding: 1.5rem;
-  background: #fff;
-  border: 1px solid #ddd;
-  margin-bottom: 1rem;
-}
-
-.admin-form-row {
-  margin-bottom: 1rem;
-}
-
-.admin-form-row label {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-}
-
-.admin-form-row input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-}
-
-.admin-form button {
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
 .admin-table-wrap {
-  border: 1px solid #ddd;
+  border-radius: var(--radius-lg);
   overflow-x: auto;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
+  table-layout: fixed;
 }
 
 .admin-table th,
 .admin-table td {
-  padding: 0.5rem 1rem;
+  padding: 0.85rem 0.75rem;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.admin-table th {
-  background: #f9f9f9;
-  font-weight: 600;
+.admin-table input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
 }
 
-.admin-table tbody tr:last-child td {
-  border-bottom: none;
+.admin-table button {
+  padding: 0.35rem 0.55rem;
+  font-size: 0.8rem;
+  margin-right: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: white;
+  cursor: pointer;
+}
+
+.admin-table button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.admin-table tr.editing td {
+  background: #f4f0ff;
+}
+
+/* ======================
+   PRINT STYLES
+====================== */
+@media print {
+
+  body {
+    background: white !important;
+  }
+
+  /* ❌ Hide UI clutter */
+  header,
+  .admin-form,
+  .admin-filters,
+  .logout-btn,
+  .nav,
+  button {
+    display: none !important;
+  }
+
+  /* ✅ Expand layout */
+  .admin-main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* ✅ Clean table wrapper */
+  .admin-table-wrap {
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* ✅ Table optimized for print */
+  .admin-table {
+    width: 100%;
+    table-layout: auto; /* allow natural sizing */
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    white-space: normal; /* wrap text */
+    color: black;
+  }
+
+  /* ✅ Replace inputs with clean text */
+  .admin-table input {
+    border: none;
+    padding: 0;
+    font-size: 12px;
+    background: transparent;
+  }
+
+  /* Prevent row splitting */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 20mm;
+  }
+
+  h1, h2 {
+    color: black;
+  }
+}
+
+.print-btn {
+  margin-bottom: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}
+
+@media print {
+  .print-btn {
+    display: none;
+  }
 }
