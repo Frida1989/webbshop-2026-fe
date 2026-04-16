@@ -16,8 +16,6 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About us</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <!-- <li><a href="register.html">Register</a></li>
-          <li><a href="login.html" class="nav-login">Log In</a></li> -->
         </ul>
 
         <div class="user-area" id="userArea" style="display: none">
@@ -31,39 +29,68 @@
     </header>
 
     <main class="admin-main">
-      <h1>Admin – Manage Products</h1>
+      <h1>Admin – Manage Events</h1>
 
       <form id="createProductForm" class="admin-form">
+
         <div class="admin-form-row">
-          <label for="name">Name</label>
+          <label for="name">Event Title</label>
           <input type="text" id="name" required />
         </div>
+
+        <div class="admin-form-row">
+          <label for="description">Description</label>
+          <input type="text" id="description" required />
+        </div>
+
         <div class="admin-form-row">
           <label for="price">Price</label>
           <input type="number" id="price" step="0.01" min="0" required />
         </div>
+
         <div class="admin-form-row">
-          <label for="spots">Spots</label>
-          <input type="number" id="spots" min="0" required />
+          <label for="spots">Max Spots</label>
+          <input type="number" id="spots" min="1" required />
         </div>
+
         <div class="admin-form-row">
           <label for="image">Image URL</label>
           <input type="url" id="image" required />
         </div>
+
         <div class="admin-form-row">
-          <label for="slug">Slug</label>
-          <input type="text" id="slug" required placeholder="e.g. organic-tomatoes" />
+          <label for="location">City</label>
+          <select id="location" required>
+            <option value="">Select city</option>
+            <option value="Stockholm">Stockholm</option>
+            <option value="Göteborg">Göteborg</option>
+            <option value="Malmö">Malmö</option>
+            <option value="Uppsala">Uppsala</option>
+          </select>
         </div>
-        <button type="submit">Create Product</button>
+
+        <div class="admin-form-row">
+          <label for="date">Event Date</label>
+          <input type="date" id="date" required />
+        </div>
+
+        <div class="admin-form-row">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="Music">Music</option>
+            <option value="Art & culture">Art & culture</option>
+            <option value="Health">Health</option>
+            <option value="Sport">Sport</option>
+            <option value="Dance">Dance</option>
+            <option value="Social activities">Social activities</option>
+          </select>
+        </div>
+
+        <button type="submit">Create Event</button>
       </form>
 
-      <h2>Products</h2>
+      <h2>Events</h2>
       <div class="admin-table-wrap">
-        <div class="admin-filters">
-          <button id="filterAll" class="active">All</button>
-          <button id="filterUpcoming">Upcoming</button>
-          <button id="filterSoldOut">Sold Out</button>
-        </div>
         <button onclick="window.print()" class="print-btn">Print</button>
         <table class="admin-table">
           <thead>
@@ -72,18 +99,35 @@
               <th>Date</th>
               <th>Location</th>
               <th>Price</th>
-              <th>Bookings</th>
               <th>Spots Left</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="productsTableBody">
-            <tr id="loadingRow">
-              <td colspan="7" class="loading-cell">Loading products...</td>
+            <tr>
+              <td colspan="7">Loading...</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <h2>Bookings</h2>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Spots</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="bookingsTableBody">
+              <tr>
+                <td colspan="5">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </main>
 
     <script type="module" src="./src/scripts/admin.js"></script>

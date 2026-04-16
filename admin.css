@@ -1,14 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  --color-bg: #f8f6ff;
+  --color-surface: #ffffff;
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-text: #241b35;
+  --color-text-muted: #6f6785;
+  --color-border: #e7ddff;
+  --color-danger: #ef4444;
+
+  --gradient-primary: linear-gradient(135deg, #7c3aed, #a855f7);
+
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.admin-main {
+  max-width: 1180px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.admin-main h1 {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.admin-main h2 {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 2.5rem 0 1.25rem;
+}
+
+.admin-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-form-row {
+  margin-bottom: 1.25rem;
+}
+
+.admin-form-row label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.admin-form-row input,
+.admin-form-row select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fcfbff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.admin-form-row input:focus,
+.admin-form-row select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+  outline: none;
+}
+
+.admin-form button {
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+  margin-top: 0.5rem;
+}
+
+.admin-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.3);
+}
+
 .admin-table-wrap {
   border-radius: var(--radius-lg);
   overflow-x: auto;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
+  padding: 1rem 1rem 0 1rem;
+  position: relative;
+}
+
+.print-btn {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  z-index: 10;
+}
+
+.print-btn:hover {
+  background: var(--color-primary-hover);
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
+  min-width: 1050px;
+  background: var(--color-surface);
+  margin-top: 0.5rem;
 }
 
 .admin-table th,
@@ -16,126 +154,149 @@
   padding: 0.85rem 0.75rem;
   text-align: left;
   border-bottom: 1px solid var(--color-border);
-  overflow: hidden;
-  text-overflow: ellipsis;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.admin-table th {
+  background: #f8f6ff;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-table th:last-child,
+.admin-table td:last-child {
+  width: 190px;
+  text-align: center;
+  padding: 0.6rem 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
   white-space: nowrap;
+}
+
+.save-btn {
+  background: #10b981;
+  color: white;
+}
+
+.cancel-btn {
+  background: #6b7280;
+  color: white;
 }
 
 .admin-table input {
   width: 100%;
-  max-width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
   box-sizing: border-box;
-  padding: 0.4rem 0.5rem;
-  font-size: 0.9rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
+  font-size: 0.94rem;
 }
 
-.admin-table button {
-  padding: 0.35rem 0.55rem;
-  font-size: 0.8rem;
-  margin-right: 0.25rem;
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
-  background: white;
-  cursor: pointer;
-}
-
-.admin-table button:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+.admin-table tr.editing {
+  background: #f8f4ff;
 }
 
 .admin-table tr.editing td {
-  background: #f4f0ff;
+  border-bottom: none !important;
 }
 
-/* ======================
-   PRINT STYLES
-====================== */
 @media print {
+  body { background: white !important; }
 
-  body {
-    background: white !important;
-  }
-
-  /* ❌ Hide UI clutter */
-  header,
-  .admin-form,
-  .admin-filters,
-  .logout-btn,
-  .nav,
-  button {
+  header, .admin-form, .admin-main h1, .admin-main h2, .print-btn {
     display: none !important;
   }
 
-  /* ✅ Expand layout */
   .admin-main {
     max-width: 100%;
     margin: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
+    padding: 20px 0;
+    background: white;
   }
 
-  /* ✅ Clean table wrapper */
+  .admin-main::before {
+    content: "Events | Eventera";
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #241b35;
+  }
+
   .admin-table-wrap {
-    overflow: visible;
+    padding: 0;
+    margin: 0;
     border: none;
-    box-shadow: none;
+    overflow: visible !important;
   }
 
-  /* ✅ Table optimized for print */
   .admin-table {
-    width: 100%;
-    table-layout: auto; /* allow natural sizing */
-    font-size: 12px;
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed;
     border-collapse: collapse;
+    font-size: 11px;
   }
 
   .admin-table th,
   .admin-table td {
-    border: 1px solid #ccc;
-    padding: 6px 8px;
-    white-space: normal; /* wrap text */
-    color: black;
+    border: 1px solid #555;
+    padding: 8px 9px;
   }
 
-  /* ✅ Replace inputs with clean text */
-  .admin-table input {
-    border: none;
-    padding: 0;
-    font-size: 12px;
-    background: transparent;
+  .admin-table th:last-child,
+  .admin-table td:last-child {
+    display: none;
   }
 
-  /* Prevent row splitting */
+  .admin-table th:nth-child(1),
+  .admin-table td:nth-child(1) { width: 35%; }
+
+  .admin-table th:nth-child(2),
+  .admin-table td:nth-child(2) { width: 18%; }
+
+  .admin-table th:nth-child(3),
+  .admin-table td:nth-child(3) { width: 22%; }
+
+  .admin-table th:nth-child(4),
+  .admin-table td:nth-child(4) { width: 12%; }
+
+  .admin-table th:nth-child(5),
+  .admin-table td:nth-child(5) { width: 13%; }
+
+  .admin-table th {
+    background: #f4f4f4;
+    font-weight: 700;
+  }
+
   tr {
     page-break-inside: avoid;
   }
 
-  /* Page margins */
   @page {
-    margin: 20mm;
-  }
-
-  h1, h2 {
-    color: black;
-  }
-}
-
-.print-btn {
-  margin-bottom: 1rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 999px;
-  border: none;
-  background: var(--color-primary);
-  color: white;
-  cursor: pointer;
-}
-
-@media print {
-  .print-btn {
-    display: none;
+    margin: 15mm;
   }
 }
