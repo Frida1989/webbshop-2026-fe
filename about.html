@@ -5,44 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | Eventera</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="aboutUs.css" />
     <script src="./src/scripts/header.js" defer></script>
-</head>
-<body>
+  </head>
+
+  <body>
     <header class="site-header">
-      <nav>
+      <nav class="nav container">
         <a href="index.html" class="logo">Eventera</a>
+
         <ul class="nav-links">
-          <!-- <li><a href="products.html">Events</a></li> -->
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li><a href="about.html" class="active">About us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="login.html" class="nav-login">Log In</a></li>
-        <!-- <li><a href="admin.html">Admin</a></li>  SYNLIGT ENDAST NÄR INLOGGAD SOM ADMIN -->
         </ul>
 
-        <div class="user-area" id="userArea" style="display: none;">
+        <div class="user-area" id="userArea" style="display: none">
           <div class="user-profile">
             <div class="user-avatar" id="userInitial"></div>
             <span id="userName">User</span>
           </div>
-<div class="story-highlight">
-  <div class="quote-box">
-    <div class="testimonial-card">
-      <p class="testimonial-text">
-        “Finally a platform where event details actually make sense. I
-        booked in less than 2 minutes.”
-      </p>
-      <div class="testimonial-user">
-        <span class="user-name">Johan Eriksson</span>
-        <span class="user-role">User</span>
-      </div>
-    </div>
-  </div>
-</div>
+          <button class="logout-btn" type="button">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="about-page">
+      <section class="about-hero">
+        <div class="container about-hero-inner">
+          <div class="about-hero-text">
+            <p class="section-label">ABOUT EVENTERA</p>
+            <h1>
+              We make it easier to discover and book unforgettable events.
+            </h1>
+            <p class="about-intro">
+              Eventera is built for people who want memorable experiences
+              without the stress. From concerts and workshops to community
+              gatherings and special moments, we help users find events that
+              match their vibe.
+            </p>
+
+            <div class="about-hero-buttons">
+              <a href="index.html" class="primary-btn">Explore Events</a>
+              <a href="#our-story" class="secondary-btn">Our Story</a>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- VALUES -->
+      <section class="about-section story-section" id="our-story">
+        <div class="section-heading">
+          <p class="section-label">OUR STORY</p>
+          <h2>Created to connect people with experiences worth remembering.</h2>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-text">
+            <p>
+              Eventera was created from a simple idea: finding and booking
+              events should feel inspiring, easy, and trustworthy. Too often,
+              event platforms feel cluttered, confusing, or outdated.
+            </p>
+            <p>
+              We wanted to create a space where users can quickly understand
+              what an event is, when it happens, how much it costs, and whether
+              it's the right fit for them.
+            </p>
+            <p>
+              Our goal is to combine smart structure with a modern visual
+              experience, so every visitor feels confident exploring what's
+              next.
+            </p>
+          </div>
+
+          <div class="story-highlight">
+            <div class="quote-box">
+              <div class="testimonial-card">
+                <p class="testimonial-text">
+                  “Finally a platform where event details actually make sense. I
+                  booked in less than 2 minutes.”
+                </p>
+                <div class="testimonial-user">
+                  <span class="user-name">Johan Eriksson</span>
+                  <span class="user-role">User</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="about-section values-section">
         <div class="section-heading center">
           <p class="section-label">OUR VALUES</p>
@@ -88,30 +142,27 @@
         </div>
       </section>
 
-<!-- WHY US -->
-<section class="why-us-section">
-  <div class="why-us-container">
-    
-    <p class="section-label">WHY EVENTERA</p>
+      <section class="why-us-section">
+        <div class="why-us-container">
+          <p class="section-label">WHY EVENTERA</p>
 
-    <h2>Designed with both users and organizers in mind.</h2>
-<p class="why-us-intro">
-      Our platform is not only about helping visitors discover events — it's
-      also about giving organizers a better way to present them. We want every
-      event to feel appealing, informative, and easy to manage.
-    </p>
+          <h2>Designed with both users and organizers in mind.</h2>
 
-    <ul class="why-us-list">
-      <li>Clear event cards with useful details</li>
-      <li>Simple navigation and booking flow</li>
-      <li>A visual style that feels modern and inviting</li>
-      <li>A platform that can grow with more events and users</li>
-    </ul>
-  </div>
-</section>
+          <p class="why-us-intro">
+            Our platform is not only about helping visitors discover events —
+            it's also about giving organizers a better way to present them. We
+            want every event to feel appealing, informative, and easy to manage.
+          </p>
 
-      
-      <!-- CTA -->
+          <ul class="why-us-list">
+            <li>Clear event cards with useful details</li>
+            <li>Simple navigation and booking flow</li>
+            <li>A visual style that feels modern and inviting</li>
+            <li>A platform that can grow with more events and users</li>
+          </ul>
+        </div>
+      </section>
+
       <section class="about-cta">
         <div class="cta-content">
           <p class="section-label">READY TO EXPLORE?</p>
@@ -124,7 +175,6 @@
         </div>
       </section>
 
-      <!-- OUR CLIENTS -->
       <section class="about-section clients-section">
         <div class="section-heading center">
           <p class="section-label">OUR CLIENTS</p>
@@ -139,8 +189,8 @@
           <div class="client-logo">NORDIC FEST</div>
         </div>
       </section>
-      </main>
-          <!-- FOOTER -->
+    </main>
+
     <footer class="site-footer">
       <div class="container footer-content">
         <div class="footer-brand">
@@ -163,6 +213,5 @@
         </div>
       </div>
     </footer>
-  
   </body>
 </html>
