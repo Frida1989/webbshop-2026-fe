@@ -44,7 +44,7 @@ localStorage.setItem("user", JSON.stringify(userData));
 
         console.log("Logged in");
 
-        window.location.assign("index.html");
+        window.location.assign("admin.html");
       } else {
         alert("Invalid email or password.");
       }
