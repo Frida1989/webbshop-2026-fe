@@ -64,6 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     eventsList.forEach((event) => {
       const spotsLeft = getSpotsLeft(event);
+      const isSoldOut = spotsLeft === 0;
+
+      const spotsText = isSoldOut ? "Sold out" : `${spotsLeft} spots left`;
+
+      const buttonText = isSoldOut ? "Sold out-More info" : "Book now";
+
+      const buttonClass = isSoldOut
+        ? "event-button event-button--soldout"
+        : "event-button";
 
       const eventCard = document.createElement("article");
       eventCard.classList.add("event-card");
@@ -87,7 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <span>🎟 ${event.price} kr</span>
           </div>
 
-          <a href="event-details.html?id=${event._id}" class="event-button">Book now</a>
+          <a href="event-details.html?id=${event._id}" class="${buttonClass}">
+  ${buttonText}
+</a>
         </div>
       `;
 
