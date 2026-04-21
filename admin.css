@@ -221,84 +221,24 @@
   border-bottom: none !important;
 }
 
+/* =========================
+   CLEAN PRINT SYSTEM (NEW)
+========================= */
 @media print {
-  body {
-    background: white !important;
+  body * {
+    visibility: hidden;
   }
 
-  header,
-  .admin-form,
-  .print-btn {
-    display: none !important;
+  .print-only,
+  .print-only * {
+    visibility: visible;
   }
 
-  .admin-main {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    background: white;
-  }
-
-  /* =========================
-     SEPARATE PRINT SECTIONS
-  ========================= */
-
-  .print-section {
-    page-break-after: always;
-    padding: 10mm 0;
-  }
-
-  .print-section:last-child {
-    page-break-after: auto;
-  }
-
-  .admin-main::before {
-    content: "Eventera Admin Report";
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 26px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #241b35;
-  }
-
-  /* =========================
-     TABLE STYLING
-  ========================= */
-
-  .admin-table-wrap {
-    padding: 0;
-    margin: 0;
-    border: none;
-    overflow: visible !important;
-  }
-
-  .admin-table {
-    width: 100% !important;
-    table-layout: fixed;
-    border-collapse: collapse;
-    font-size: 11px;
-  }
-
-  .admin-table th,
-  .admin-table td {
-    border: 1px solid #555;
-    padding: 8px;
-  }
-
-  .admin-table th {
-    background: #f4f4f4;
-    font-weight: 700;
-  }
-
-  .admin-table th:last-child,
-  .admin-table td:last-child {
-    display: none;
-  }
-
-  tr {
-    page-break-inside: avoid;
+  .print-only {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 
   @page {
