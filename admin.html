@@ -96,53 +96,25 @@
         <button type="submit">Create Event</button>
       </form>
 
-      <!-- EVENTS TABLE (PRINT SECTION 1) -->
       <section class="print-section events-print">
         <h2>Events</h2>
 
         <div class="admin-table-wrap">
-          <button onclick="window.print()" class="print-btn">Print</button>
+          <!-- <button onclick="window.print()" class="print-btn">Print</button> -->
 
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Price</th>
-                <th>Spots</th>
-              </tr>
-            </thead>
-
-            <tbody id="productsTableBody">
-              <tr>
-                <td colspan="5">Loading...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- BOOKINGS TABLE (PRINT SECTION 2) -->
-      <section class="print-section bookings-print">
-        <h2>Bookings</h2>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>User</th>
-                <th>Event</th>
-                <th>Date</th>
-                <th>Tickets</th>
-              </tr>
-            </thead>
-
-            <tbody id="bookingsTableBody">
-              <tr>
-                <td colspan="4">Loading...</td>
-              </tr>
-            </tbody>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Price</th>
+              <th>Spots left</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
           </table>
         </div>
       </section>
