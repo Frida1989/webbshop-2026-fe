@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard | Eventera</title>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="admin.css" />
+
     <script src="./src/scripts/header.js" defer></script>
   </head>
+
   <body>
+    <!-- HEADER -->
     <header class="site-header">
       <nav class="container nav">
         <a href="index.html" class="logo">Eventera</a>
+
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About us</a></li>
@@ -28,9 +33,11 @@
       </nav>
     </header>
 
+    <!-- MAIN -->
     <main class="admin-main">
       <h1>Admin – Manage Events</h1>
 
+      <!-- CREATE EVENT FORM -->
       <form id="createProductForm" class="admin-form">
 
         <div class="admin-form-row">
@@ -40,7 +47,7 @@
 
         <div class="admin-form-row">
           <label for="description">Description</label>
-          <input type="text" id="description" required />
+          <textarea id="description" rows="4" required></textarea>
         </div>
 
         <div class="admin-form-row">
@@ -89,27 +96,37 @@
         <button type="submit">Create Event</button>
       </form>
 
-      <h2>Events</h2>
-      <div class="admin-table-wrap">
-        <button onclick="window.print()" class="print-btn">Print</button>
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Location</th>
-              <th>Price</th>
-              <th>Spots Left</th>
-            </tr>
-          </thead>
-          <tbody id="productsTableBody">
-            <tr>
-              <td colspan="7">Loading...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <h2>Bookings</h2>
+      <!-- EVENTS TABLE (PRINT SECTION 1) -->
+      <section class="print-section events-print">
+        <h2>Events</h2>
+
+        <div class="admin-table-wrap">
+          <button onclick="window.print()" class="print-btn">Print</button>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Spots</th>
+              </tr>
+            </thead>
+
+            <tbody id="productsTableBody">
+              <tr>
+                <td colspan="5">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BOOKINGS TABLE (PRINT SECTION 2) -->
+      <section class="print-section bookings-print">
+        <h2>Bookings</h2>
+
         <div class="admin-table-wrap">
           <table class="admin-table">
             <thead>
@@ -117,19 +134,22 @@
                 <th>User</th>
                 <th>Event</th>
                 <th>Date</th>
-                <th>Spots</th>
-                <th>Actions</th>
+                <th>Tickets</th>
               </tr>
             </thead>
+
             <tbody id="bookingsTableBody">
               <tr>
-                <td colspan="5">Loading...</td>
+                <td colspan="4">Loading...</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </section>
+
     </main>
 
+    <!-- SCRIPT -->
     <script type="module" src="./src/scripts/admin.js"></script>
   </body>
 </html>

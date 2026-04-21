@@ -222,21 +222,38 @@
 }
 
 @media print {
-  body { background: white !important; }
+  body {
+    background: white !important;
+  }
 
-  header, .admin-form, .admin-main h1, .admin-main h2, .print-btn {
+  header,
+  .admin-form,
+  .print-btn {
     display: none !important;
   }
 
   .admin-main {
     max-width: 100%;
     margin: 0;
-    padding: 20px 0;
+    padding: 0;
     background: white;
   }
 
+  /* =========================
+     SEPARATE PRINT SECTIONS
+  ========================= */
+
+  .print-section {
+    page-break-after: always;
+    padding: 10mm 0;
+  }
+
+  .print-section:last-child {
+    page-break-after: auto;
+  }
+
   .admin-main::before {
-    content: "Events | Eventera";
+    content: "Eventera Admin Report";
     display: block;
     font-family: var(--font-heading);
     font-size: 26px;
@@ -245,6 +262,10 @@
     margin-bottom: 20px;
     color: #241b35;
   }
+
+  /* =========================
+     TABLE STYLING
+  ========================= */
 
   .admin-table-wrap {
     padding: 0;
@@ -255,7 +276,6 @@
 
   .admin-table {
     width: 100% !important;
-    min-width: 0 !important;
     table-layout: fixed;
     border-collapse: collapse;
     font-size: 11px;
@@ -264,32 +284,17 @@
   .admin-table th,
   .admin-table td {
     border: 1px solid #555;
-    padding: 8px 9px;
+    padding: 8px;
+  }
+
+  .admin-table th {
+    background: #f4f4f4;
+    font-weight: 700;
   }
 
   .admin-table th:last-child,
   .admin-table td:last-child {
     display: none;
-  }
-
-  .admin-table th:nth-child(1),
-  .admin-table td:nth-child(1) { width: 35%; }
-
-  .admin-table th:nth-child(2),
-  .admin-table td:nth-child(2) { width: 18%; }
-
-  .admin-table th:nth-child(3),
-  .admin-table td:nth-child(3) { width: 22%; }
-
-  .admin-table th:nth-child(4),
-  .admin-table td:nth-child(4) { width: 12%; }
-
-  .admin-table th:nth-child(5),
-  .admin-table td:nth-child(5) { width: 13%; }
-
-  .admin-table th {
-    background: #f4f4f4;
-    font-weight: 700;
   }
 
   tr {
@@ -299,4 +304,32 @@
   @page {
     margin: 15mm;
   }
+}
+
+.admin-form-row textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fcfbff;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+
+  resize: none;
+  overflow: hidden;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.admin-form-row textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+  outline: none;
+  background: #ffffff;
+}
+
+.admin-form-row textarea::placeholder {
+  color: var(--color-text-muted);
 }
