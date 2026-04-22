@@ -1,51 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hakim Livs</title>
+    <title>Home | Eventera</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.8.4/dist/axios.min.js"></script>
+    <script type="module" src="./src/scripts/index.js" defer></script>
+    <script src="./src/scripts/header.js" defer></script>
   </head>
   <body>
-
     <!-- HEADER -->
     <header class="site-header">
-      <nav>
-        <a href="index.html" class="logo">Hakim Livs</a>
+      <nav class="container nav">
+        <a href="index.html" class="logo">Eventera</a>
         <ul class="nav-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="cart.html">Cart (0)</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="admin.html">Admin</a></li>
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <!-- <li><a href="register.html">Register</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li> -->
         </ul>
+
+        <!-- User Area -->
+        <div class="user-area" id="userArea" style="display: none">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
       </nav>
     </header>
 
     <!-- HERO (full width) -->
-    <section class="hero">
-      <h1>Welcome to Hakim Livs</h1>
-      <p>Fresh groceries delivered to your door</p>
-    </section>
+    <main>
+      <section class="hero">
+        <!-- wrapper för bättre layout -->
+        <div class="container hero__content">
+          <!--  headline -->
+          <h1>Find your vibe.<br />Book your next event.</h1>
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      <h1>Featured products</h1>
-      <div id="products"></div>
+          <!--  beskrivning -->
+          <p>
+            Explore dance, music, wellness and cultural events near you, all in
+            one elegant booking experience.
+          </p>
+
+          <!--   NY: search-card istället för lösa inputs -->
+          <form class="hero-search-card" aria-label="Search events">
+            <!--  Location -->
+            <div class="form-group">
+              <label class="label" for="location">Location</label>
+              <select id="location" name="location">
+                <option value="" selected>All cities</option>
+                <option value="Stockholm">Stockholm</option>
+                <option value="Malmö">Malmö</option>
+                <option value="Göteborg">Göteborg</option>
+                <option value="Uppsala">Uppsala</option>
+              </select>
+            </div>
+
+            <!--  Date -->
+            <div class="form-group">
+              <label class="label" for="datepicker">Date</label>
+              <input type="date" id="datepicker" name="datepicker" />
+            </div>
+
+            <!--  Category  -->
+            <div class="form-group">
+              <label class="label" for="category">Category</label>
+              <select id="category" name="category">
+                <option value="" selected>All categories</option>
+                <option value="Music">Music</option>
+                <option value="Art & culture">Art & culture</option>
+                <option value="Health">Health</option>
+                <option value="Sport">Sport</option>
+                <option value="Dance">Dance</option>
+                <option value="Social activities">Social activities</option>
+              </select>
+            </div>
+
+            <!-- CTA -->
+            <button
+              id="searchBtn"
+              type="submit"
+              class="btn btn-primary hero-search-btn"
+            >
+              Search events
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="events-section">
+        <div class="events-container">
+          <div class="events-header">
+            <h2>Find your next event</h2>
+            <p>
+              Explore upcoming experiences, discover new moments, and book your
+              place.
+            </p>
+          </div>
+
+          <div id="eventsGrid" class="events-grid"></div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
-      <div class="footer-content">
-        <p>&copy; 2024 Hakim Livs. All rights reserved.</p>
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Eventera</a>
+          <p class="footer-text">
+            Discover curated experiences, book unforgettable moments, and find
+            the events that match your vibe.
+          </p>
+        </div>
+
         <div class="footer-links">
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/terms">Terms</a>
+          <a href="about.html">About</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Eventera. All rights reserved.</p>
         </div>
       </div>
     </footer>
-
-    <!-- PAGE-SPECIFIC JAVASCRIPT -->
-    <script type="module" src="./src/scripts/index.js"></script>
+    <script src="js/events.js" defer></script>
   </body>
 </html>

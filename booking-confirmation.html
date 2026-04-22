@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Confirmation | Eventera</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./src/scripts/header.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav">
+        <a href="index.html" class="logo">Eventera</a>
+        <ul class="nav-links">
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li>
+        </ul>
+
+        <div class="user-area" id="userArea" style="display: none;">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="confirmation-page">
+      <section class="confirmation-section">
+        <div class="container">
+          <div class="confirmation-card">
+            <span class="confirmation-badge">Reservation confirmed</span>
+            <h1>Thank you for your reservation!</h1>
+            <p class="confirmation-intro">
+              Your booking has been successfully completed. Please review your
+              event details below and make sure to arrive in good time.
+            </p>
+
+            <div id="confirmationDetails" class="confirmation-details">
+              <p>Loading your booking details...</p>
+            </div>
+
+            <div class="confirmation-actions">
+              <a href="index.html" class="btn btn-primary">Back to home</a>
+              <a href="index.html#events" class="btn btn-secondary"
+                >Browse more events</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/booking-confirmation.js"></script>
+  </body>
+</html>

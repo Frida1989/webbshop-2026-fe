@@ -1,20 +1,45 @@
-document.addEventListener("DOMContentLoaded", initRegister);
+const form = document.querySelector("#registerForm");
 
-function initRegister() {
-  const registerForm = document.getElementById("registerForm");
+if (form) {
+  const nameInput = document.querySelector("#name");
+  const emailInput = document.querySelector("#email");
+  const passwordInput = document.querySelector("#password");
 
-  registerForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    handleRegister();
+  if (localStorage.getItem("token")) {
+    window.location.assign("login.html");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (name.length < 3) {
+      alert("Name must be at least 3 characters long.");
+      return;
+    }
+
+    try {
+      const registerResponse = await axios.post(
+        "https://webbshop-2026-be-one.vercel.app/auth/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+
+      if (registerResponse.status === 201) {
+        alert("Registration successful. Proceed to login.");
+
+        window.location.assign("login.html");
+      }
+
+    } catch (error) {
+      console.error("Error:", error.response?.data || error);
+      alert("Registration failed.");
+    }
   });
-}
-
-function handleRegister() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  // TODO: Call register API when backend is ready
-  console.log("Register:", { name, email });
-  alert("Registration functionality not implemented yet");
 }

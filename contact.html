@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Eventera</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <script src="./src/scripts/header.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a href="index.html" class="logo">Eventera</a>
+
+        <ul class="nav-links">
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <li><a href="about.html">About us</a></li>
+          <li>
+            <a href="contact.html" class="active" aria-current="page"
+              >Contact</a
+            >
+          </li>
+          <!-- <li><a href="register.html">Register</a></li>
+          <li><a href="login.html" class="nav-login">Log In</a></li> -->
+        </ul>
+
+        <div class="user-area" id="userArea" style="display: none">
+          <div class="user-profile">
+            <div class="user-avatar" id="userInitial"></div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" type="button">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="contact-page">
+      <!-- HERO -->
+      <section class="contact-hero">
+        <div class="container contact-hero-inner">
+          <div class="contact-hero-text">
+            <p class="section-label">CONTACT EVENTERA</p>
+            <h1>Let's create better event experiences together.</h1>
+            <p class="contact-intro">
+              Whether you have a question, want to collaborate, or need help
+              with bookings, we'd love to hear from you. Reach out and our team
+              will get back to you as soon as possible.
+            </p>
+
+            <div class="contact-hero-buttons">
+              <a href="#contact-form-section" class="primary-btn"
+                >Send a message</a
+              >
+              <a href="#contact-info-section" class="secondary-btn"
+                >Contact details</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT  -->
+      <section class="contact-section contact-top">
+        <section
+          class="contact-section contact-info-section"
+          id="contact-info-section"
+        >
+          <div class="contact-info-header">
+            <p class="section-label">GET IN TOUCH</p>
+
+            <h2 class="contact-heading">
+              We are here to help, answer questions, and support your next
+              event.
+            </h2>
+
+            <p class="contact-info-lead">
+              Have a question about a booking, need help with event details, or
+              want to collaborate with Eventera? Reach out and we'll make sure
+              your message gets to the right person.
+            </p>
+          </div>
+
+          <div class="contact-info-grid">
+            <article class="contact-info-card">
+              <span class="contact-info-label">Email:</span>
+              <a href="mailto:eventera@gmail.com" class="contact-info-value" id="mailto">
+                eventera@gmail.com
+              </a>
+              <p class="contact-info-text">
+                Best for general questions, booking support, or collaboration
+                requests.
+              </p>
+            </article>
+
+            <article class="contact-info-card">
+              <span class="contact-info-label">Phone:</span>
+              <a href="tel:+46101234567" class="contact-info-value" id="mailto">
+                +46 10 123 45 67
+              </a>
+              <p class="contact-info-text">Monday-Friday, 09:00-17:00.</p>
+            </article>
+
+            <article class="contact-info-card">
+              <p class="contact-info-value">
+                Gustav Boulevard 65, Solna, Stockholm
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- RIGHT -->
+        <div class="contact-right" id="contact-form-section">
+          <div class="contact-form-wrapper">
+            <p class="section-label">SEND A MESSAGE</p>
+            <h2>Tell us how we can help.</h2>
+
+            <form class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Full name</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  placeholder="What is your message about?"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5"></textarea>
+              </div>
+
+              <button class="primary-btn contact-submit-btn">
+                Send message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="contact-section faq-section">
+        <div class="section-heading center">
+          <p class="section-label">COMMON QUESTIONS</p>
+          <h2>Quick answers before you reach out.</h2>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>How quickly do you reply?</summary>
+            <p>We aim to respond within 1-2 business days.</p>
+          </details>
+
+          <details>
+            <summary>Can organizers contact Eventera?</summary>
+            <p>Yes, we welcome questions from organizers and collaborators.</p>
+          </details>
+
+          <details>
+            <summary>Can I get help with a booking?</summary>
+            <p>Absolutely. Send us your details and we'll help you quickly.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Eventera</a>
+          <p class="footer-text">
+            Discover curated experiences, book unforgettable moments, and find
+            the events that match your vibe.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms.html">Terms</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Eventera. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

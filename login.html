@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register | Eventera</title>
+    <title>Login | Eventera</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.8.4/dist/axios.min.js"></script>
-    <script type="module" src="./src/scripts/register.js" defer></script>
-    <script type="module" src="./src/scripts/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/scripts/header.js" defer></script>
-  </head>
-  <body>
+    <script type="module" src="./src/scripts/index.js" defer></script>
+</head>
+<body>
 
     <header class="site-header">
       <nav class="container nav">
@@ -34,18 +32,13 @@
         </div>
       </nav>
     </header>
-
-    <section class="register-hero">
+    
+    <section class="login-hero">
       <div class="register-card">
         <h1>Eventera</h1>
-        <p>Register yourself as admin</p>
+        <p>Login as admin</p>
 
-        <form id="registerForm" class="register-form">
-          <div>
-            <span class="form-label">Full Name</span>
-            <input type="text" id="name" placeholder="Enter your name" required />
-          </div>
-          
+        <form id="loginForm" class="login-form">
           <div>
             <span class="form-label">Email Address</span>
             <input type="email" id="email" placeholder="you@example.com" required />
@@ -53,18 +46,13 @@
           
           <div>
             <span class="form-label">Password</span>
-            <input type="password" id="password" placeholder="Create a password" minlength="6" required />
+            <input type="password" id="password" placeholder="Enter your password" required />
           </div>
 
           <button type="submit" class="btn btn-primary" id="submitBtn">
-            Create Account
+            Log In
           </button>
         </form>
-
-        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem;">
-          Already have an account? 
-          <a href="login.html" style="color: white; text-decoration: underline;">Log in</a>
-        </p>
       </div>
     </section>
 
@@ -90,7 +78,5 @@
         </div>
       </div>
     </footer>
-
-
-  </body>
+</body>
 </html>

@@ -3,68 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin - Hakim Livs</title>
+    <title>Admin Dashboard | Eventera</title>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="admin.css" />
+
+    <script src="./src/scripts/header.js" defer></script>
   </head>
+
   <body>
+    <!-- HEADER -->
     <header class="site-header">
-      <nav>
-        <a href="index.html" class="logo">Hakim Livs</a>
+      <nav class="container nav">
+        <a href="index.html" class="logo">Eventera</a>
+
         <ul class="nav-links">
-          <li><a href="products.html">Products</a></li>
-          <li><a href="cart.html">Cart (0)</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="admin.html">Admin</a></li>
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
+
+        <div class="user-area" id="userArea" style="display: none">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar" id="userInitial">U</div>
+            <span id="userName">User</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
       </nav>
     </header>
 
+    <!-- MAIN -->
     <main class="admin-main">
-      <h1>Admin – Create Product</h1>
+      <h1>Admin – Manage Events</h1>
 
+      <!-- CREATE EVENT FORM -->
       <form id="createProductForm" class="admin-form">
+
         <div class="admin-form-row">
-          <label for="name">Name</label>
+          <label for="name">Event Title</label>
           <input type="text" id="name" required />
         </div>
+
+        <div class="admin-form-row">
+          <label for="description">Description</label>
+          <textarea id="description" rows="4" required></textarea>
+        </div>
+
         <div class="admin-form-row">
           <label for="price">Price</label>
           <input type="number" id="price" step="0.01" min="0" required />
         </div>
+
         <div class="admin-form-row">
-          <label for="stock">Stock</label>
-          <input type="number" id="stock" min="0" required />
+          <label for="spots">Max Spots</label>
+          <input type="number" id="spots" min="1" required />
         </div>
+
         <div class="admin-form-row">
           <label for="image">Image URL</label>
           <input type="url" id="image" required />
         </div>
+
         <div class="admin-form-row">
-          <label for="slug">Slug</label>
-          <input type="text" id="slug" required placeholder="e.g. organic-tomatoes" />
+          <label for="location">City</label>
+          <select id="location" required>
+            <option value="">Select city</option>
+            <option value="Stockholm">Stockholm</option>
+            <option value="Göteborg">Göteborg</option>
+            <option value="Malmö">Malmö</option>
+            <option value="Uppsala">Uppsala</option>
+          </select>
         </div>
-        <button type="submit">Create Product</button>
+
+        <div class="admin-form-row">
+          <label for="date">Event Date</label>
+          <input type="date" id="date" required />
+        </div>
+
+        <div class="admin-form-row">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="Music">Music</option>
+            <option value="Art & culture">Art & culture</option>
+            <option value="Health">Health</option>
+            <option value="Sport">Sport</option>
+            <option value="Dance">Dance</option>
+            <option value="Social activities">Social activities</option>
+          </select>
+        </div>
+
+        <button type="submit">Create Event</button>
       </form>
 
-      <h2>Products</h2>
-      <div class="admin-table-wrap">
+      <section class="print-section events-print">
+        <h2>Events</h2>
+
+        <div class="admin-table-wrap">
+          <!-- <button onclick="window.print()" class="print-btn">Print</button> -->
+
         <table class="admin-table">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Location</th>
               <th>Price</th>
-              <th>Stock</th>
-              <th>Slug</th>
+              <th>Spots left</th>
+              <th>Actions</th>
             </tr>
           </thead>
-          <tbody id="productsTableBody">
-            <tr><td colspan="4">Loading...</td></tr>
-          </tbody>
+          <tbody id="productsTableBody"></tbody>
         </table>
-      </div>
+          </table>
+        </div>
+      </section>
+
     </main>
 
+    <!-- SCRIPT -->
     <script type="module" src="./src/scripts/admin.js"></script>
   </body>
 </html>
