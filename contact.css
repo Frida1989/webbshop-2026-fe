@@ -422,3 +422,11 @@
     transform: none;
   }
 }
+
+#mailto {
+  text-decoration: underline;
+}
+
+#mailto:hover {
+  color: blue;
+}
