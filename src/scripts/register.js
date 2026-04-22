@@ -6,7 +6,7 @@ if (form) {
   const passwordInput = document.querySelector("#password");
 
   if (localStorage.getItem("token")) {
-    window.location.assign("admin.html");
+    window.location.assign("login.html");
   }
 
   form.addEventListener("submit", async (e) => {
@@ -32,32 +32,14 @@ if (form) {
       );
 
       if (registerResponse.status === 201) {
-        console.log("Registration successful");
+        alert("Registration successful. Proceed to login.");
 
-        const loginResponse = await axios.post(
-          "https://webbshop-2026-be-one.vercel.app/auth/login",
-          {
-            email,
-            password,
-          }
-        );
-
-        if (loginResponse.status === 200) {
-          const token = loginResponse.data.token;
-
-          localStorage.setItem("token", token);
-
-          localStorage.setItem("user", JSON.stringify({ name, email }));
-
-          console.log("Registered & logged in:", { name, email });
-
-          window.location.assign("admin.html");
-        }
+        window.location.assign("login.html");
       }
 
     } catch (error) {
       console.error("Error:", error.response?.data || error);
-      alert("Registration or login failed.");
+      alert("Registration failed.");
     }
   });
 }
