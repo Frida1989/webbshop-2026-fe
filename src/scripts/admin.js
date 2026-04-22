@@ -114,6 +114,60 @@ async function deleteBooking(id) {
   renderEvents(allEvents);
 }
 
+// EDIT EVENT
+function enableEventEditMode(row) {
+  const id = row.dataset.id;
+
+  const event = allEvents.find((e) => e._id === id);
+
+  if (!event) {
+    alert('Event not found');
+    return;
+  }
+
+  const originalHTML = row.innerHTML;
+
+  row.innerHTML = `
+    <td><input type="text" value="${event.title}" class="edit-title"></td>
+    <td><input type="date" value="${event.date?.split('T')[0]}" class="edit-date"></td>
+    <td><input type="text" value="${event.location}" class="edit-location"></td>
+    <td><input type="number" value="${event.price}" class="edit-price"></td>
+    <td><input type="number" value="${event.maxCapacity}" class="edit-capacity"></td>
+    <td>
+      <button class="save-event">Save</button>
+      <button class="cancel-event">Cancel</button>
+    </td>
+  `;
+
+  const saveBtn = row.querySelector('.save-event');
+  const cancelBtn = row.querySelector('.cancel-event');
+
+  cancelBtn.onclick = () => {
+    row.innerHTML = originalHTML;
+    attachListeners();
+  };
+
+  saveBtn.onclick = async () => {
+    try {
+      const updatedEvent = {
+        ...event,
+        title: row.querySelector('.edit-title').value.trim(),
+        date: new Date(row.querySelector('.edit-date').value).toISOString(),
+        location: row.querySelector('.edit-location').value,
+        price: Number(row.querySelector('.edit-price').value),
+        maxCapacity: Number(row.querySelector('.edit-capacity').value),
+      };
+
+      await api.put(`/${id}`, updatedEvent);
+
+      await loadEvents();
+    } catch (err) {
+      console.error(err);
+      alert('Failed to update event');
+    }
+  };
+}
+
 // EDIT BOOKING
 function enableBookingEditMode(row) {     // Enable editing for booking
   const id = row.dataset.id;
@@ -166,7 +220,6 @@ function enableBookingEditMode(row) {     // Enable editing for booking
 
       // Send update request
       await bookingsApi.put(`/${id}`, {
-        ...booking,
         quantity,
       });
 
@@ -316,6 +369,12 @@ function attachListeners() {
 
       renderEvents(allEvents);
     };
+  });
+
+  // Edit event buttons
+  document.querySelectorAll('.edit-btn').forEach((btn) => {
+    btn.onclick = (e) =>
+    enableEventEditMode(e.target.closest('tr'));
   });
 
   // Delete booking buttons
