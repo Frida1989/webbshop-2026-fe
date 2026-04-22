@@ -1,13 +1,5 @@
 import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.7/+esm';
 
-const description = document.getElementById('description').value.trim();
-const price = Number(document.getElementById('price').value);
-const maxCapacity = Number.parseInt(document.getElementById('spots').value, 10);
-const imageUrl = document.getElementById('image').value.trim();
-const location = document.getElementById('location').value;
-const category = document.getElementById('category').value;
-const dateValue = document.getElementById('date').value;
-const title = document.getElementById('name').value.trim();
 const form = document.getElementById('createProductForm');
 const tbody = document.getElementById('productsTableBody');
 const token = localStorage.getItem('token');
@@ -63,6 +55,15 @@ function getBookingsForEvent(eventId) {        // Returns all bookings for a spe
 // CREATE EVENT
 form.addEventListener('submit', async (e) => {
   e.preventDefault(); // prevent page reload
+
+  const description = document.getElementById('description').value.trim();
+  const price = Number(document.getElementById('price').value);
+  const maxCapacity = Number.parseInt(document.getElementById('spots').value, 10);
+  const imageUrl = document.getElementById('image').value.trim();
+  const location = document.getElementById('location').value;
+  const category = document.getElementById('category').value;
+  const dateValue = document.getElementById('date').value;
+  const title = document.getElementById('name').value.trim();
 
   if (!title || !description || !imageUrl || !location || !category || !dateValue) {    // Validate required fields
     alert('Fill all fields');
